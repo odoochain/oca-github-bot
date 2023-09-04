@@ -5,6 +5,7 @@ import ast
 import logging
 import os
 import re
+from typing import Tuple
 
 import requests
 
@@ -91,7 +92,7 @@ def get_manifest(addon_dir):
 
 def set_manifest_version(addon_dir, version):
     manifest_path = get_manifest_path(addon_dir)
-    with open(manifest_path, "r") as f:
+    with open(manifest_path) as f:
         manifest = f.read()
     manifest = MANIFEST_VERSION_RE.sub(r"\g<pre>" + version + r"\g<post>", manifest)
     with open(manifest_path, "w") as f:
@@ -216,7 +217,7 @@ def get_odoo_series_from_version(version):
     return tuple(int(s) for s in series.split("."))
 
 
-def get_odoo_series_from_branch(branch):
+def get_odoo_series_from_branch(branch) -> Tuple[int, int]:
     mo = BRANCH_RE.match(branch)
     if not mo:
         raise OdooSeriesNotDetected()

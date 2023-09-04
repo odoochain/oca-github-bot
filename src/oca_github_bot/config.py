@@ -117,7 +117,7 @@ OCABOT_USAGE = os.environ.get(
     "OCABOT_USAGE",
     "**Ocabot commands**\n"
     "* ``ocabot merge major|minor|patch|nobump``\n"
-    "* ``ocabot rebase``"
+    "* ``ocabot rebase``\n"
     "* ``ocabot migration {MODULE_NAME}``",
 )
 
@@ -137,3 +137,10 @@ MAINTAINER_CHECK_ODOO_RELEASES = (
     and os.environ.get("MAINTAINER_CHECK_ODOO_RELEASES").split(",")
     or []
 )
+
+WHEEL_BUILD_TOOLS = os.environ.get(
+    "WHEEL_BUILD_TOOLS",
+    "build,pip,setuptools<58,wheel,setuptools-odoo,whool",
+).split(",")
+
+MAIN_BRANCH_BOT_MIN_VERSION = os.environ.get("MAIN_BRANCH_BOT_MIN_VERSION", "8.0")
