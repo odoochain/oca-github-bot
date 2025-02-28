@@ -22,7 +22,7 @@ def _create_or_find_branch_milestone(gh_repo, branch):
 def _find_issue(gh_repo, milestone, target_branch):
     issue_title = f"Migration to version {target_branch}"
     issue = False
-    for i in gh_repo.issues(milestone=milestone.number):
+    for i in gh_repo.issues(milestone=milestone.number, state="all"):
         if i.title == issue_title:
             issue = i
             break
@@ -111,7 +111,7 @@ def migration_issue_start(org, repo, pr, username, module=None, dry_run=False):
                 if not user_can_push(gh, org, repo, username, clone_dir, target_branch):
                     github.gh_call(
                         gh_pr.create_comment,
-                        f"Sorry @{username} you are not allowed to mark the addon to"
+                        f"Sorry @{username} you are not allowed to mark the addon to "
                         f"be migrated.\n\n"
                         f"To do so you must either have push permissions on "
                         f"the repository, or be a declared maintainer of all "

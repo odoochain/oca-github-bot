@@ -1,3 +1,49 @@
+v20240706
+~~~~~~~~~
+
+**Bugfixes**
+
+- Fix regression in nightly main branch bot. (`#279 <https://github.com/oca/oca-github-bot/issues/279>`_)
+- Upgrade to Python 3.12 (`#293 <https://github.com/oca/oca-github-bot/pull/293>`_)
+- Upgrade sentry client
+- Upgrade to latest OCA/maintainer-tools
+
+
+v20231216
+~~~~~~~~~
+
+**Features**
+
+- Skip fork repos earlier in main branch bot, for better performance in organisations
+  with a large number of forks. (`#277 <https://github.com/oca/oca-github-bot/issues/277>`_)
+- Support generating ``pyproject.toml`` instead of ``setup.py`` (`#266 <https://github.com/oca/oca-github-bot/issues/266>`_)
+- Upgraded maintainer-tools (`#275 <https://github.com/oca/oca-github-bot/issues/275>`_)
+- Look for migration issues in all states in ``/ocabot migration`` command (`#216 <https://github.com/OCA/oca-github-bot/pull/216>`_)
+
+**Bugfixes**
+
+- Start wheel build from an empty directory, to avoid accidentally importing
+  python files from the addon root directory during the build process. (`#270 <https://github.com/oca/oca-github-bot/issues/270>`_)
+- Fixed rendering of OdooSeriesNotFound exceptions (`#274 <https://github.com/oca/oca-github-bot/issues/274>`_)
+
+
+v20231013
+~~~~~~~~~
+
+**Features**
+
+- Add ``MAIN_BRANCH_BOT_MIN_VERSION`` config option to declare the minimum Odoo series
+  for which the main branch bot actions runs. (`#252 <https://github.com/oca/oca-github-bot/issues/252>`_)
+- Upgrade to latest ``maintainer-tools``, and use ``oca-gen-addon-readme
+  --if-source-changed`` to avoid full regenaration of all readme when we upgrade
+  the README generator. (`#256 <https://github.com/oca/oca-github-bot/issues/256>`_)
+
+
+**Bugfixes**
+
+- Add binutils to Dockerfile to fix pandoc installer. (`#259 <https://github.com/oca/oca-github-bot/issues/259>`_)
+
+
 v20230619
 ~~~~~~~~~
 

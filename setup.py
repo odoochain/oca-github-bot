@@ -14,7 +14,7 @@ setup(
     author="Odoo Community Association (OCA)",
     author_email="info@odoo-community.org",
     url="https://github.com/OCA/oca-github-bot",
-    python_requires=">=3.8",
+    python_requires="==3.12.*",
     setup_requires=["setuptools_scm"],
     packages=find_packages("src"),
     package_dir={"": "src"},
@@ -30,14 +30,17 @@ setup(
         "celery[redis]",
         # Odoo
         "odoorpc",
-        # Sentry
-        "raven",
+        # Sentry SDK (<2 because we use an old version of self-hosted Sentry)
+        "sentry-sdk[celery]<2",
         # twine to check and upload wheels
         "twine",
         # lxml for parsing PyPI index pages
         "lxml",
         # for setuptools-odoo-make-default
         "setuptools-odoo",
+        "setuptools",
+        # for whool-init
+        "whool",
         # packaging
         "packaging>=22",
     ],
